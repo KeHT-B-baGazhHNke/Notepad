@@ -1,4 +1,6 @@
-﻿namespace Notepad
+﻿using System.Windows.Forms;
+
+namespace Notepad
 {
     partial class Form1
     {
@@ -58,7 +60,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.colorBox = new System.Windows.Forms.ToolStripComboBox();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
@@ -178,36 +179,37 @@
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Location = new System.Drawing.Point(0, 54);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 2);
+            this.panel1.Size = new System.Drawing.Size(800, 1);
             this.panel1.TabIndex = 2;
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.FileName = this.filename;
             this.saveFileDialog1.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
             // 
             // textBox1
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(0, 56);
+            this.textBox1.Font = new System.Drawing.Font("Consolas", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.HideSelection = false;
+            this.textBox1.Location = new System.Drawing.Point(0, 54);
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.textBox1.Size = new System.Drawing.Size(800, 410);
+            this.textBox1.Size = new System.Drawing.Size(800, 412);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "";
             this.textBox1.WordWrap = false;
@@ -215,6 +217,9 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.White;
+            this.toolStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
@@ -226,9 +231,10 @@
             this.toolStripSeparator2,
             this.toolStripLabel3,
             this.colorBox});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 26);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 28);
+            this.toolStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStrip1.Size = new System.Drawing.Size(800, 30);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -236,51 +242,54 @@
             // 
             this.toolStripLabel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(52, 25);
+            this.toolStripLabel1.Size = new System.Drawing.Size(52, 27);
             this.toolStripLabel1.Text = "Стиль:";
             // 
             // bt1
             // 
-            this.bt1.BackColor = System.Drawing.SystemColors.Control;
+            this.bt1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.bt1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.bt1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.bt1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.bt1.Image = ((System.Drawing.Image)(resources.GetObject("bt1.Image")));
             this.bt1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bt1.Name = "bt1";
-            this.bt1.Size = new System.Drawing.Size(29, 25);
+            this.bt1.Size = new System.Drawing.Size(29, 27);
             this.bt1.Text = "Ж";
+            this.bt1.ToolTipText = "Жирный";
             this.bt1.Click += new System.EventHandler(this.ToggleBold);
             // 
             // toolStripButton2
             // 
+            this.toolStripButton2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButton2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
             this.toolStripButton2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButton2.Size = new System.Drawing.Size(29, 27);
             this.toolStripButton2.Text = "К";
+            this.toolStripButton2.ToolTipText = "Курсив";
             this.toolStripButton2.Click += new System.EventHandler(this.ToggleItalic);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 30);
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripLabel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(63, 25);
+            this.toolStripLabel2.Size = new System.Drawing.Size(63, 27);
             this.toolStripLabel2.Text = "Размер:";
             // 
             // fontBox
             // 
-            this.fontBox.BackColor = System.Drawing.SystemColors.Window;
-            this.fontBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.fontBox.BackColor = System.Drawing.SystemColors.Control;
+            this.fontBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fontBox.Items.AddRange(new object[] {
             "8",
             "9",
@@ -299,41 +308,36 @@
             "48",
             "72"});
             this.fontBox.Name = "fontBox";
-            this.fontBox.Size = new System.Drawing.Size(121, 28);
+            this.fontBox.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.fontBox.Size = new System.Drawing.Size(120, 30);
             this.fontBox.SelectedIndexChanged += new System.EventHandler(this.FontSize);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 30);
             // 
             // toolStripLabel3
             // 
             this.toolStripLabel3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripLabel3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(45, 25);
+            this.toolStripLabel3.Size = new System.Drawing.Size(45, 27);
             this.toolStripLabel3.Text = "Цвет:";
             // 
             // colorBox
             // 
+            this.colorBox.BackColor = System.Drawing.SystemColors.Control;
+            this.colorBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.colorBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.colorBox.Items.AddRange(new object[] {
             "Черный",
             "Красный",
             "Зеленый",
             "Синий"});
             this.colorBox.Name = "colorBox";
-            this.colorBox.Size = new System.Drawing.Size(121, 28);
-            this.colorBox.SelectedIndexChanged += new System.EventHandler(this.ToggleColor);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 54);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 2);
-            this.panel2.TabIndex = 5;
+            this.colorBox.Size = new System.Drawing.Size(121, 30);
+            this.colorBox.SelectedIndexChanged += new System.EventHandler(this.FontColor);
             // 
             // errorProvider1
             // 
@@ -367,11 +371,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(800, 466);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -381,7 +385,7 @@
             this.Activated += new System.EventHandler(this.Form1_Activated);
             this.Deactivate += new System.EventHandler(this.Form1_Deactivated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Close);
-            this.Load += new System.EventHandler(this.CreateFile);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -404,15 +408,12 @@
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.RichTextBox textBox1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton bt1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripComboBox fontBox;
-        private System.Windows.Forms.ToolStripComboBox colorBox;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
@@ -428,6 +429,8 @@
         private System.Windows.Forms.ToolStripMenuItem параметрыСтраницыToolStripMenuItem;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.ToolStripMenuItem предпросмотрПечатиToolStripMenuItem;
+        private SaveFileDialog saveFileDialog1;
+        private ToolStripComboBox colorBox;
     }
 }
 

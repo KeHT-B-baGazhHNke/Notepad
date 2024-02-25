@@ -14,28 +14,23 @@ using System.Drawing.Printing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Reflection;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Notepad
 {
     public partial class Form1 : Form
     {
-        public string filename;
-        public bool isChanged;
+        public string filename = "Безымянный";
+        public bool isChanged = false;
         private string stringToPrint = "";
 
         public Form1()
         {
             InitializeComponent();
-            //Init();
-            fontBox.SelectedItem = fontBox.Items[0];
+            fontBox.SelectedItem = fontBox.Items[3];
             colorBox.SelectedItem = colorBox.Items[0];
+            textBox1.SelectionIndent = 4;
         }
-        //public void Init()
-        //{
-        //    filename = "Безымянный";
-        //    isChanged = false;
-        //}
+
         public void CreateFile(object sender, EventArgs e)
         {
             if (isChanged)
@@ -43,15 +38,20 @@ namespace Notepad
                 DialogResult result = MessageBox.Show($"Вы хотите сохранить изменения в файле\n\"{filename}\"?", "Notepad", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
                 {
-                    SaveFile(filename);
+                    if (!SaveFile(filename))
+                    {
+                        return;
+                    }
                 }
                 else if (result == DialogResult.Cancel)
                 {
                     return;
                 }
             }
-            printDocument1.DocumentName = "Безымянный";
+
             textBox1.Text = "";
+            isChanged = false;
+            printDocument1.DocumentName = "Безымянный";
             filename = "Безымянный";
             UpdateTextWithTitle();
         }
@@ -62,7 +62,10 @@ namespace Notepad
                 DialogResult result = MessageBox.Show($"Вы хотите сохранить изменения в файле\n\"{filename}\"?", "Notepad", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
                 {
-                    SaveFile(filename);
+                    if (!SaveFile(filename))
+                    {
+                        return;
+                    }
                 }
                 else if (result == DialogResult.Cancel)
                 {
@@ -120,12 +123,21 @@ namespace Notepad
         }
         public void Save(object sender, EventArgs e)
         {
-
             SaveFile(filename);
         }
         public void SaveAs(object sender, EventArgs e)
         {
             SaveFile("");
+        }
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            isChanged = false;
+            printDocument1.DocumentName = "Безымянный";
+            textBox1.Text = "";
+            filename = "Безымянный";
+            UpdateTextWithTitle();
         }
         private void Form1_Activated(object sender, EventArgs e)
         {
@@ -179,7 +191,7 @@ namespace Notepad
                 this.Text = "*" + this.Text;
             }
         }
-        public void UpdateTextWithTitle()
+        private void UpdateTextWithTitle()
         {
             if (filename != "")
             {
@@ -190,6 +202,8 @@ namespace Notepad
                 Text = "Безымянный \t– Notepad";
             }
         }
+
+
         private void ToggleBold(object sender, EventArgs e)
         {
             if (textBox1.SelectionFont != null)
@@ -236,8 +250,7 @@ namespace Notepad
                 );
             }
         }
-
-        private void ToggleColor(object sender, EventArgs e)
+        private void FontColor(object sender, EventArgs e)
         {
             switch (colorBox.SelectedIndex)
             {
@@ -258,11 +271,11 @@ namespace Notepad
                     break;
             }
         }
-
         private void FontSize(object sender, EventArgs e)
         {
             textBox1.SelectionFont = new Font(textBox1.SelectionFont.FontFamily,int.Parse(fontBox.Text),textBox1.SelectionFont.Style);
         }
+
 
         private void PrintFile(object sender, EventArgs e)
         {
@@ -272,7 +285,6 @@ namespace Notepad
                 printDialog.Document.Print();
             }
         }
-
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
             int charactersOnPage = 0;
@@ -285,16 +297,20 @@ namespace Notepad
             stringToPrint = stringToPrint.Substring(charactersOnPage);
             e.HasMorePages = (stringToPrint.Length > 0);
         }
-
         private void параметрыСтраницыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pageSetupDialog1.ShowDialog();
         }
-
         private void предпросмотрПечатиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             stringToPrint = textBox1.Text;
             printPreviewDialog1.ShowDialog();
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About about = new About();
+            about.ShowDialog();
         }
     }
 }
