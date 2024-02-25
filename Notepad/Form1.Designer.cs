@@ -72,7 +72,7 @@ namespace Notepad
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Menu;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
@@ -86,6 +86,7 @@ namespace Notepad
             // 
             // файлToolStripMenuItem
             // 
+            this.файлToolStripMenuItem.BackColor = System.Drawing.SystemColors.Menu;
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.создатьToolStripMenuItem,
             this.открытьToolStripMenuItem,
@@ -104,72 +105,92 @@ namespace Notepad
             // 
             // создатьToolStripMenuItem
             // 
+            this.создатьToolStripMenuItem.BackColor = System.Drawing.SystemColors.Menu;
+            this.создатьToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
-            this.создатьToolStripMenuItem.Text = "Создать";
+            this.создатьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
+            this.создатьToolStripMenuItem.Text = "Создать                                       ";
             this.создатьToolStripMenuItem.Click += new System.EventHandler(this.CreateFile);
             // 
             // открытьToolStripMenuItem
             // 
+            this.открытьToolStripMenuItem.BackColor = System.Drawing.SystemColors.Menu;
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
+            this.открытьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.открытьToolStripMenuItem.Text = "Открыть...";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.OpenFile);
             // 
             // сохранитьToolStripMenuItem
             // 
+            this.сохранитьToolStripMenuItem.BackColor = System.Drawing.SystemColors.Menu;
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
+            this.сохранитьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.Save);
             // 
             // сохранитьToolStripMenuItem1
             // 
+            this.сохранитьToolStripMenuItem1.BackColor = System.Drawing.SystemColors.Menu;
             this.сохранитьToolStripMenuItem1.Name = "сохранитьToolStripMenuItem1";
-            this.сохранитьToolStripMenuItem1.Size = new System.Drawing.Size(258, 26);
+            this.сохранитьToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.сохранитьToolStripMenuItem1.Size = new System.Drawing.Size(366, 26);
             this.сохранитьToolStripMenuItem1.Text = "Сохранить как...";
             this.сохранитьToolStripMenuItem1.Click += new System.EventHandler(this.SaveAs);
             // 
             // toolStripSeparator3
             // 
+            this.toolStripSeparator3.BackColor = System.Drawing.SystemColors.Menu;
+            this.toolStripSeparator3.ForeColor = System.Drawing.SystemColors.Menu;
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(255, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(363, 6);
             // 
             // параметрыСтраницыToolStripMenuItem
             // 
+            this.параметрыСтраницыToolStripMenuItem.BackColor = System.Drawing.SystemColors.Menu;
             this.параметрыСтраницыToolStripMenuItem.Name = "параметрыСтраницыToolStripMenuItem";
-            this.параметрыСтраницыToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
+            this.параметрыСтраницыToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.параметрыСтраницыToolStripMenuItem.Text = "Параметры страницы...";
             this.параметрыСтраницыToolStripMenuItem.Click += new System.EventHandler(this.параметрыСтраницыToolStripMenuItem_Click);
             // 
             // предпросмотрПечатиToolStripMenuItem
             // 
+            this.предпросмотрПечатиToolStripMenuItem.BackColor = System.Drawing.SystemColors.Menu;
             this.предпросмотрПечатиToolStripMenuItem.Name = "предпросмотрПечатиToolStripMenuItem";
-            this.предпросмотрПечатиToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
+            this.предпросмотрПечатиToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.предпросмотрПечатиToolStripMenuItem.Text = "Предпросмотр печати...";
             this.предпросмотрПечатиToolStripMenuItem.Click += new System.EventHandler(this.предпросмотрПечатиToolStripMenuItem_Click);
             // 
             // печатьToolStripMenuItem
             // 
+            this.печатьToolStripMenuItem.BackColor = System.Drawing.SystemColors.Menu;
             this.печатьToolStripMenuItem.Name = "печатьToolStripMenuItem";
-            this.печатьToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
+            this.печатьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.печатьToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.печатьToolStripMenuItem.Text = "Печать...";
             this.печатьToolStripMenuItem.Click += new System.EventHandler(this.PrintFile);
             // 
             // toolStripSeparator4
             // 
+            this.toolStripSeparator4.BackColor = System.Drawing.SystemColors.Menu;
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(255, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(363, 6);
             // 
             // выходToolStripMenuItem
             // 
+            this.выходToolStripMenuItem.BackColor = System.Drawing.SystemColors.Menu;
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
+            this.выходToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.Exit);
             // 
             // справкаToolStripMenuItem
             // 
+            this.справкаToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.оПрограммеToolStripMenuItem});
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
@@ -178,6 +199,7 @@ namespace Notepad
             // 
             // оПрограммеToolStripMenuItem
             // 
+            this.оПрограммеToolStripMenuItem.BackColor = System.Drawing.SystemColors.Menu;
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
