@@ -38,6 +38,7 @@
             this.сохранитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.параметрыСтраницыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.предпросмотрПечатиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.печатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +64,6 @@
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.предпросмотрПечатиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -141,6 +141,13 @@
             this.параметрыСтраницыToolStripMenuItem.Text = "Параметры страницы...";
             this.параметрыСтраницыToolStripMenuItem.Click += new System.EventHandler(this.параметрыСтраницыToolStripMenuItem_Click);
             // 
+            // предпросмотрПечатиToolStripMenuItem
+            // 
+            this.предпросмотрПечатиToolStripMenuItem.Name = "предпросмотрПечатиToolStripMenuItem";
+            this.предпросмотрПечатиToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
+            this.предпросмотрПечатиToolStripMenuItem.Text = "Предпросмотр печати...";
+            this.предпросмотрПечатиToolStripMenuItem.Click += new System.EventHandler(this.предпросмотрПечатиToolStripMenuItem_Click);
+            // 
             // печатьToolStripMenuItem
             // 
             this.печатьToolStripMenuItem.Name = "печатьToolStripMenuItem";
@@ -185,6 +192,7 @@
             // 
             // saveFileDialog1
             // 
+            this.saveFileDialog1.FileName = this.filename;
             this.saveFileDialog1.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
             // 
             // openFileDialog1
@@ -354,13 +362,6 @@
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // предпросмотрПечатиToolStripMenuItem
-            // 
-            this.предпросмотрПечатиToolStripMenuItem.Name = "предпросмотрПечатиToolStripMenuItem";
-            this.предпросмотрПечатиToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
-            this.предпросмотрПечатиToolStripMenuItem.Text = "Предпросмотр печати...";
-            this.предпросмотрПечатиToolStripMenuItem.Click += new System.EventHandler(this.предпросмотрПечатиToolStripMenuItem_Click);
             // 
             // Form1
             // 

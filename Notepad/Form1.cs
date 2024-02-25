@@ -12,6 +12,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using System.IO;
 using System.Drawing.Printing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Notepad
 {
@@ -24,26 +27,48 @@ namespace Notepad
         public Form1()
         {
             InitializeComponent();
-            Init();
+            //Init();
             fontBox.SelectedItem = fontBox.Items[0];
             colorBox.SelectedItem = colorBox.Items[0];
         }
-        public void Init()
+        //public void Init()
+        //{
+        //    filename = "Безымянный";
+        //    isChanged = false;
+        //}
+        public void CreateFile(object sender, EventArgs e)
         {
-            filename = "";
-            isChanged = false;
-        }
-    public void CreateFile(object sender, EventArgs e)
-        {
-            SaveUnsaved();
+            if (isChanged)
+            {
+                DialogResult result = MessageBox.Show($"Вы хотите сохранить изменения в файле\n\"{filename}\"?", "Notepad", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    SaveFile(filename);
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
             printDocument1.DocumentName = "Безымянный";
             textBox1.Text = "";
-            filename = "";
+            filename = "Безымянный";
             UpdateTextWithTitle();
         }
         public void OpenFile(object sender, EventArgs e)
         {
-            SaveUnsaved();
+            if (isChanged)
+            {
+                DialogResult result = MessageBox.Show($"Вы хотите сохранить изменения в файле\n\"{filename}\"?", "Notepad", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    SaveFile(filename);
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
             openFileDialog1.FileName = "";
             if(openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -57,19 +82,23 @@ namespace Notepad
                 }
                 catch 
                 {
-                    MessageBox.Show("Невозможно открыть файл!");
                 }
             }
             UpdateTextWithTitle();
             printDocument1.DocumentName = Path.GetFileName(filename);
         }
-        public void SaveFile(string _filename)
+        public bool SaveFile(string _filename)
         {
-            if (_filename == "")
+            if (_filename == "Безымянный" || _filename == "")
             {
                 if(saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     _filename = saveFileDialog1.FileName;
+                }
+                else
+                {
+                    printDocument1.DocumentName = Path.GetFileName(filename);
+                    return false;
                 }
             }
             try
@@ -79,34 +108,25 @@ namespace Notepad
                 text.Close();
                 filename = _filename;
                 isChanged = false;
+                printDocument1.DocumentName = Path.GetFileName(filename);
+                UpdateTextWithTitle();
+                return true;
             }
             catch
             {
-                MessageBox.Show("Невозможно сохранить файл!");
+                printDocument1.DocumentName = Path.GetFileName(filename);
+                return false;
             }
-            UpdateTextWithTitle();
         }
         public void Save(object sender, EventArgs e)
         {
+
             SaveFile(filename);
         }
         public void SaveAs(object sender, EventArgs e)
         {
             SaveFile("");
         }
-
-        public void SaveUnsaved()
-        {
-            if(isChanged)
-            {
-                DialogResult result = MessageBox.Show($"Вы хотите сохранить изменения в файле\n{filename}?", "Сохранение файла", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-                if(result == DialogResult.Yes) 
-                {
-                    SaveFile(filename);
-                }
-            }
-        }
-
         private void Form1_Activated(object sender, EventArgs e)
         {
             файлToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -117,13 +137,38 @@ namespace Notepad
             файлToolStripMenuItem.ForeColor = System.Drawing.SystemColors.GrayText;
             справкаToolStripMenuItem.ForeColor = System.Drawing.SystemColors.GrayText;
         }
+        private void Exit(object sender, EventArgs e)
+        {
+            if (isChanged)
+            {
+                DialogResult result = MessageBox.Show($"Вы хотите сохранить изменения в файле\n\"{filename}\"?", "Notepad", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    if (SaveFile(filename) == false)
+                        return;
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+            Close();
+        }
         private void Close(object sender, FormClosingEventArgs e)
         {
-            SaveUnsaved();
-        }
-        public void Exit(object sender, EventArgs e)
-        {
-            Close();
+            if (isChanged)
+            {
+                DialogResult result = MessageBox.Show($"Вы хотите сохранить изменения в файле\n\"{filename}\"?", "Notepad", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    if(SaveFile(filename) == false)
+                        e.Cancel = true;
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+            }
         }
         private void textChanged(object sender, EventArgs e)
         {
@@ -136,13 +181,13 @@ namespace Notepad
         }
         public void UpdateTextWithTitle()
         {
-            if(filename != "")
+            if (filename != "")
             {
-                this.Text = Path.GetFileName(filename) + " \t– Notepad";
+                Text = Path.GetFileName(filename) + " \t– Notepad";
             }
             else
             {
-                this.Text = "Безымянный \t– Notepad";
+                Text = "Безымянный \t– Notepad";
             }
         }
         private void ToggleBold(object sender, EventArgs e)
