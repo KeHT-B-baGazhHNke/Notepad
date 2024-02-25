@@ -14,6 +14,7 @@ using System.Drawing.Printing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Reflection;
 using System.Threading;
+using System.Media;
 
 namespace Notepad
 {
@@ -311,6 +312,8 @@ namespace Notepad
         {
             About about = new About();
             about.ShowDialog();
+            
         }
+
     }
 }
